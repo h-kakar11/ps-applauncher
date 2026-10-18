@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-input="nav">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Library</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230070cc'/%3E%3Cpath d='M9 7l9 5-9 5z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="scene" id="scene"></div>
+    <div class="backdrop-img" id="bg-a"></div>
+    <div class="backdrop-img" id="bg-b"></div>
+    <div class="backdrop-scrim" id="scrim"></div>
+  </div>
+
+  <header class="topbar">
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab is-active" data-nav data-view="home">Games</button>
+      <button class="tab" data-nav data-view="library">Library</button>
+    </nav>
+    <div class="topbar-right">
+      <button class="icon-btn" data-nav id="btn-search" aria-label="Search games"></button>
+      <button class="icon-btn" data-nav id="btn-settings" aria-label="Settings"></button>
+      <time class="clock" id="clock">00:00:00</time>
+    </div>
+  </header>
+
+  <main>
+    <section class="view view-home" id="view-home">
+      <div class="carousel" id="carousel" aria-label="Games">
+        <div class="carousel-track" id="track"></div>
+      </div>
+      <div class="stage" id="stage"></div>
+    </section>
+
+    <section class="view" id="view-library" hidden>
+      <div class="library-head">
+        <h1 class="library-title">Game library</h1>
+        <p class="library-summary" id="library-summary"></p>
+      </div>
+      <div class="library-toolbar">
+        <label class="search-field">
+          <span class="search-icon" id="search-icon"></span>
+          <input id="search" data-nav type="search" placeholder="Search games by name" autocomplete="off" spellcheck="false">
+        </label>
+        <div class="chips" id="sort-chips">
+          <button class="chip" data-nav data-sort="recent">Recently played</button>
+          <button class="chip" data-nav data-sort="name">Name</button>
+          <button class="chip" data-nav data-sort="played">Most played</button>
+          <button class="chip" data-nav data-sort="size">Size</button>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-secondary" data-nav id="btn-scan">Scan folder</button>
+          <button class="btn btn-primary" data-nav id="btn-add">Add game</button>
+        </div>
+      </div>
+      <div class="library-grid" id="library-grid"></div>
+    </section>
+  </main>
+
+  <footer class="hints" aria-hidden="true">
+    <span><i class="glyph">✕</i>Select</span>
+    <span><i class="glyph">○</i>Back</span>
+    <span><i class="glyph">□</i>Options</span>
+    <span><i class="glyph">△</i>Search</span>
+    <span><i class="glyph glyph-wide">☰</i>Settings</span>
+  </footer>
+
+  <div id="layers"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
