@@ -1,5 +1,8 @@
 # PS5-style Game Library
 
+any issues? goto https://github.com/h-kakar11/ps-applauncher/issues
+
+
 A full-screen, controller-friendly launcher for your local PC games, styled after the PS5 home screen (see `design-system.md`).
 
 ## Run
