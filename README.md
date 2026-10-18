@@ -12,6 +12,9 @@ On first launch it scans `A:\games` and adds every game folder it finds. Change 
 
 ## Pin to the taskbar (one-click launch)
 
+Double-click **`Create Shortcut.vbs`** once. It adds a **Game Library** shortcut to the Start menu and Desktop; press
+Win, type *Game Library*, right-click it and choose **Pin to taskbar**. Or make the shortcut by hand:
+
 Windows won't pin a `.vbs` file directly, so make a shortcut that runs it through `wscript.exe`:
 
 1. Right-click the desktop → **New → Shortcut**.
