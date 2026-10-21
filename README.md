@@ -1,5 +1,9 @@
 # Game Library
 
+Ultra-customisable, check our forks to see what you can do with this!
+<img width="1909" height="1015" alt="fork of ps-applauncher" src="https://github.com/user-attachments/assets/3c129c74-9934-483e-bcce-43a883a99ea1" />
+
+
 A PS5-style, full-screen launcher for the games on your Windows PC. It pulls your library together from Steam, Epic, GOG, Ubisoft, EA, Xbox and plain game folders, then lets you browse and launch them with a controller or keyboard.
 
 It is a small local web app: a zero-dependency Node.js server on `127.0.0.1` with a single-page UI in `public/`. Nothing is sent anywhere except the optional artwork, Spotify and Discord features described below.
