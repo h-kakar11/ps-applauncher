@@ -37,6 +37,7 @@ fs.mkdirSync(WALL_DIR, { recursive: true });
 const SETTINGS = {
   // profile
   profileName: { type: 'str', max: 40, def: '' },
+  spotifyClientId: { type: 'str', max: 64, def: '' },
   avatarColor: { type: 'enum', values: ['blue', 'cyan', 'teal', 'green', 'orange', 'pink', 'purple', 'gray'], def: 'blue' },
   // library
   scanSteam: { type: 'bool', def: true },
@@ -114,7 +115,6 @@ function normalizeSettings(raw = {}) {
 
 /* ---------------- Library database ---------------- */
 
-const DEFAULT_SETTINGS = { gamesRoot: 'A:\\games', clock24: true, profileName: '', sounds: true, autoArtwork: true, spotifyClientId: '' };
 const IMAGE_KINDS = ['cover', 'background', 'logo'];
 const STATUSES = ['', 'backlog', 'playing', 'completed', 'dropped', 'hold'];
 const firstRun = !fs.existsSync(DB_FILE);
@@ -123,17 +123,15 @@ const db = loadDb();
 function loadDb() {
   try {
     const raw = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
-    return { settings: { ...DEFAULT_SETTINGS, ...raw.settings }, games: Array.isArray(raw.games) ? raw.games : [], spotify: raw.spotify || null };
-  } catch {
-    return { settings: { ...DEFAULT_SETTINGS }, games: [], spotify: null };
     return {
       settings: normalizeSettings(raw.settings),
       games: Array.isArray(raw.games) ? raw.games : [],
       ignored: Array.isArray(raw.ignored) ? raw.ignored : [],
       wallpapers: Array.isArray(raw.wallpapers) ? raw.wallpapers : [],
+      spotify: raw.spotify || null,
     };
   } catch {
-    return { settings: defaultSettings(), games: [], ignored: [], wallpapers: [] };
+    return { settings: defaultSettings(), games: [], ignored: [], wallpapers: [], spotify: null };
   }
 }
 
