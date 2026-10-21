@@ -24,7 +24,7 @@ fs.mkdirSync(IMG_DIR, { recursive: true });
 
 /* ---------------- Library database ---------------- */
 
-const DEFAULT_SETTINGS = { gamesRoot: 'A:\\games', clock24: true, profileName: '', sounds: true, autoArtwork: true };
+const DEFAULT_SETTINGS = { gamesRoot: 'A:\\games', clock24: true, profileName: '', sounds: true, autoArtwork: true, spotifyClientId: '' };
 const IMAGE_KINDS = ['cover', 'background', 'logo'];
 const firstRun = !fs.existsSync(DB_FILE);
 const db = loadDb();
@@ -32,9 +32,9 @@ const db = loadDb();
 function loadDb() {
   try {
     const raw = JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
-    return { settings: { ...DEFAULT_SETTINGS, ...raw.settings }, games: Array.isArray(raw.games) ? raw.games : [] };
+    return { settings: { ...DEFAULT_SETTINGS, ...raw.settings }, games: Array.isArray(raw.games) ? raw.games : [], spotify: raw.spotify || null };
   } catch {
-    return { settings: { ...DEFAULT_SETTINGS }, games: [] };
+    return { settings: { ...DEFAULT_SETTINGS }, games: [], spotify: null };
   }
 }
 
@@ -600,6 +600,205 @@ function validateGameInput(body, partial) {
   return out;
 }
 
+/* ---------------- Spotify (now playing + playback control) ---------------- */
+// Uses the Spotify Web API with the PKCE login flow, so no client secret is needed.
+// It controls whatever Spotify device is active (usually the Spotify app on this PC).
+
+const SPOTIFY_API = 'https://api.spotify.com/v1';
+const SPOTIFY_REDIRECT = `http://127.0.0.1:${PORT}/spotify/callback`;
+const SPOTIFY_SCOPES = 'user-read-playback-state user-modify-playback-state user-read-currently-playing';
+let spotifyAuth = null; // pending login: { verifier, state, at }
+let spotifyCache = { at: 0, data: null };
+let spotifyBackoff = 0;
+let spotifyRefreshing = null;
+
+const b64url = (buf) => buf.toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const htmlEsc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function spotifyError(status, message) {
+  const e = new Error(message);
+  e.status = status;
+  return e;
+}
+
+function spotifyAuthUrl() {
+  const clientId = db.settings.spotifyClientId;
+  if (!clientId) throw new Error('Paste your Spotify Client ID in Settings first');
+  const verifier = b64url(crypto.randomBytes(64));
+  const challenge = b64url(crypto.createHash('sha256').update(verifier).digest());
+  const state = b64url(crypto.randomBytes(16));
+  spotifyAuth = { verifier, state, at: Date.now() };
+  return 'https://accounts.spotify.com/authorize?' + new URLSearchParams({
+    client_id: clientId, response_type: 'code', redirect_uri: SPOTIFY_REDIRECT,
+    code_challenge_method: 'S256', code_challenge: challenge, state, scope: SPOTIFY_SCOPES,
+  });
+}
+
+async function spotifyToken(params) {
+  const res = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ client_id: db.settings.spotifyClientId, ...params }),
+    signal: AbortSignal.timeout(12000),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const e = new Error(data.error_description || data.error || `Spotify sign-in failed (${res.status})`);
+    e.status = res.status;
+    throw e;
+  }
+  db.spotify = {
+    access: data.access_token,
+    refresh: data.refresh_token || db.spotify?.refresh,
+    expires: Date.now() + Math.max(60, (data.expires_in || 3600) - 60) * 1000,
+  };
+  save();
+}
+
+async function spotifyAccessToken() {
+  if (!db.spotify) return null;
+  if (Date.now() >= db.spotify.expires) {
+    // Share one refresh between concurrent requests (refresh tokens can rotate).
+    spotifyRefreshing ||= spotifyToken({ grant_type: 'refresh_token', refresh_token: db.spotify.refresh })
+      .finally(() => { spotifyRefreshing = null; });
+    try {
+      await spotifyRefreshing;
+    } catch (e) {
+      if (e.status === 400 || e.status === 401) { db.spotify = null; save(); return null; }
+      throw spotifyError(0, 'Couldn’t reach Spotify');
+    }
+  }
+  return db.spotify?.access || null;
+}
+
+async function spotifyApi(method, apiPath, body, retry = true) {
+  const token = await spotifyAccessToken();
+  if (!token) throw spotifyError(401, 'Spotify isn’t connected');
+  let res;
+  try {
+    res = await fetch(SPOTIFY_API + apiPath, {
+      method,
+      headers: { Authorization: `Bearer ${token}`, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+      body: body ? JSON.stringify(body) : undefined,
+      signal: AbortSignal.timeout(10000),
+    });
+  } catch {
+    throw spotifyError(0, 'Couldn’t reach Spotify');
+  }
+  if (res.status === 401 && retry && db.spotify) { db.spotify.expires = 0; return spotifyApi(method, apiPath, body, false); }
+  if (res.status === 429) {
+    spotifyBackoff = Date.now() + (Number(res.headers.get('retry-after')) || 5) * 1000;
+    throw spotifyError(429, 'Spotify is rate limiting requests. Try again in a moment.');
+  }
+  const text = await res.text();
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch {}
+  if (res.status >= 400) {
+    const reason = data?.error?.reason;
+    const msg = reason === 'PREMIUM_REQUIRED' ? 'Controlling playback needs Spotify Premium'
+      : data?.error?.message || `Spotify error (${res.status})`;
+    const e = spotifyError(res.status, msg);
+    e.reason = reason;
+    throw e;
+  }
+  return { status: res.status, data };
+}
+
+async function spotifyNow() {
+  const base = { configured: !!db.settings.spotifyClientId, connected: !!db.spotify };
+  if (!base.configured || !base.connected) return { ...base, active: false, isPlaying: false, track: null };
+  const now = Date.now();
+  if (spotifyCache.data && (now - spotifyCache.at < 800 || now < spotifyBackoff)) return spotifyCache.data;
+  let out;
+  try {
+    const r = await spotifyApi('GET', '/me/player?additional_types=episode');
+    const d = r.data;
+    const it = d?.item;
+    if (!it) {
+      out = { ...base, active: !!d?.device, isPlaying: false, track: null, device: d?.device?.name || null };
+    } else {
+      const episode = it.type === 'episode';
+      const images = (episode ? it.images : it.album?.images) || [];
+      out = {
+        ...base,
+        active: true,
+        isPlaying: !!d.is_playing,
+        progressMs: d.progress_ms || 0,
+        device: d.device?.name || null,
+        track: {
+          id: it.id,
+          name: it.name,
+          artists: episode ? it.show?.name || '' : (it.artists || []).map((a) => a.name).join(', '),
+          album: episode ? '' : it.album?.name || '',
+          art: images[0]?.url || null,
+          durationMs: it.duration_ms || 0,
+        },
+      };
+    }
+  } catch (e) {
+    return { configured: base.configured, connected: !!db.spotify, active: false, isPlaying: false, track: null, error: e.message };
+  }
+  spotifyCache = { at: Date.now(), data: out };
+  return out;
+}
+
+async function spotifyControl({ action, positionMs }) {
+  const req = {
+    play: ['PUT', '/me/player/play'],
+    pause: ['PUT', '/me/player/pause'],
+    next: ['POST', '/me/player/next'],
+    previous: ['POST', '/me/player/previous'],
+    seek: ['PUT', `/me/player/seek?position_ms=${Math.max(0, Math.round(Number(positionMs) || 0))}`],
+  }[action];
+  if (!req) throw new Error('Unknown action');
+  spotifyCache.at = 0;
+  try {
+    await spotifyApi(...req);
+  } catch (e) {
+    if (/Restriction violated/i.test(e.message) && (action === 'play' || action === 'pause')) return; // already in that state
+    if (e.status !== 404) throw e;
+    // No active device: wake the one Spotify knows about (e.g. the app on this PC).
+    const devices = (await spotifyApi('GET', '/me/player/devices')).data?.devices || [];
+    const device = devices.find((d) => d.is_active) || devices[0];
+    if (!device) throw new Error('Open Spotify on this PC and start a song first');
+    await spotifyApi('PUT', '/me/player', { device_ids: [device.id], play: action === 'play' });
+    if (action !== 'play') {
+      await new Promise((r) => setTimeout(r, 700));
+      await spotifyApi(...req);
+    }
+  }
+}
+
+function openExternal(url) {
+  const child = spawn('rundll32', ['url.dll,FileProtocolHandler', url], { detached: true, stdio: 'ignore', windowsHide: true });
+  child.on('error', () => {});
+  child.unref();
+}
+
+function spotifyPage(title, message) {
+  return `<!doctype html><meta charset="utf-8"><title>${htmlEsc(title)}</title>
+<body style="margin:0;display:grid;place-items:center;height:100vh;background:#000;color:#fff;font-family:'Segoe UI',Arial,sans-serif;text-align:center">
+<div><h1 style="font-weight:300;font-size:2.5rem;margin:0 0 .75rem">${htmlEsc(title)}</h1><p style="color:#ccc;font-size:1.1rem;margin:0">${htmlEsc(message)}</p></div></body>`;
+}
+
+async function spotifyCallback(url, res) {
+  const page = (status, title, msg) => { res.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }); res.end(spotifyPage(title, msg)); };
+  const auth = spotifyAuth;
+  spotifyAuth = null;
+  const err = url.searchParams.get('error');
+  if (err) return page(400, 'Spotify wasn’t connected', err === 'access_denied' ? 'You declined access. You can try again from the library.' : err);
+  if (!auth || Date.now() - auth.at > 10 * 60 * 1000 || url.searchParams.get('state') !== auth.state) {
+    return page(400, 'Sign-in expired', 'Go back to the library and choose Connect Spotify again.');
+  }
+  try {
+    await spotifyToken({ grant_type: 'authorization_code', code: url.searchParams.get('code') || '', redirect_uri: SPOTIFY_REDIRECT, code_verifier: auth.verifier });
+    spotifyCache = { at: 0, data: null };
+    return page(200, 'Spotify connected', 'You can close this tab and return to the Game Library.');
+  } catch (e) {
+    return page(400, 'Spotify wasn’t connected', e.message);
+  }
+}
+
 async function handle(req, res) {
   if (!ALLOWED_HOSTS.has(req.headers.host)) { res.writeHead(403); return res.end(); }
   const origin = req.headers.origin;
@@ -620,6 +819,7 @@ async function handle(req, res) {
       settings: { ...db.settings, profileName: db.settings.profileName || defaultProfileName() },
       drives: await drives(),
       busy: { artwork: artworkQueue.size, sizing: sizing.size },
+      spotify: { configured: !!db.settings.spotifyClientId, connected: !!db.spotify },
       games: db.games.map((g) => publicGame(g, now)),
     });
   }
@@ -753,6 +953,11 @@ async function handle(req, res) {
     if (body.clock24 !== undefined) db.settings.clock24 = !!body.clock24;
     if (body.sounds !== undefined) db.settings.sounds = !!body.sounds;
     if (body.autoArtwork !== undefined) db.settings.autoArtwork = !!body.autoArtwork;
+    if (body.spotifyClientId !== undefined) {
+      const id = String(body.spotifyClientId).trim();
+      if (id && !/^[0-9a-f]{32}$/i.test(id)) return sendJson(res, 400, { error: 'That doesn’t look like a Spotify Client ID (32 letters and numbers)' });
+      if (id !== db.settings.spotifyClientId) { db.settings.spotifyClientId = id; db.spotify = null; spotifyCache = { at: 0, data: null }; }
+    }
     if (body.profileName !== undefined) db.settings.profileName = String(body.profileName).trim().slice(0, 40);
     save();
     driveCache.at = 0;
@@ -775,6 +980,33 @@ async function handle(req, res) {
     const file = url.searchParams.get('path') || '';
     if (!IMG_EXT_RE.test(file)) { res.writeHead(400); return res.end(); }
     return sendFile(res, file, 'no-store');
+  }
+
+  if (p === '/spotify/callback' && req.method === 'GET') return spotifyCallback(url, res);
+
+  if (p === '/api/spotify/now' && req.method === 'GET') return sendJson(res, 200, await spotifyNow());
+
+  if (p === '/api/spotify/connect' && req.method === 'POST') {
+    let authUrl;
+    try { authUrl = spotifyAuthUrl(); } catch (e) { return sendJson(res, 400, { error: e.message }); }
+    openExternal(authUrl);
+    return sendJson(res, 200, { ok: true, url: authUrl });
+  }
+
+  if (p === '/api/spotify/disconnect' && req.method === 'POST') {
+    db.spotify = null;
+    spotifyCache = { at: 0, data: null };
+    save();
+    return sendJson(res, 200, { ok: true });
+  }
+
+  if (p === '/api/spotify/control' && req.method === 'POST') {
+    try {
+      await spotifyControl(await readJson(req));
+      return sendJson(res, 200, { ok: true });
+    } catch (e) {
+      return sendJson(res, e.status === 401 ? 401 : 502, { error: e.message });
+    }
   }
 
   if (p === '/api/quit' && req.method === 'POST') {

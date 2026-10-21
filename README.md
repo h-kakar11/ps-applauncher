@@ -52,6 +52,22 @@ Prefer a Start menu entry? Pin the same shortcut to **Start** instead.
 | Options / Start | | Settings |
 | | F11 | Toggle full screen |
 
+## Music (Spotify)
+
+The **Music** tile (second in the row) shows what's playing on Spotify: album art, a progress bar, and previous / play-pause / next buttons underneath. The art also becomes the backdrop. It controls whichever Spotify device is active, normally the Spotify app on this PC, so start Spotify there and the library mirrors and controls it.
+
+One-time setup (about two minutes):
+
+1. Go to <https://developer.spotify.com/dashboard> and create an app. Tick **Web API**.
+2. Add this exact **Redirect URI**: `http://127.0.0.1:4545/spotify/callback` (use `127.0.0.1`, not `localhost`; change the port if you set `PS5LIB_PORT`).
+3. Copy the app's **Client ID**, open **Settings → Spotify** in the library, paste it, and press **Connect Spotify**. Approve access in the browser tab that opens.
+
+Notes:
+- Playback controls (play, pause, skip, seek) need **Spotify Premium**. Showing what's playing does not.
+- No client secret is used (PKCE sign-in). Tokens are stored locally in `data/library.json`; **Disconnect Spotify** in Settings deletes them.
+- If no Spotify device is active, pressing play wakes the last one you used. Spotify must be open on a device for this to work.
+- Click the progress bar to seek. With a keyboard or controller, focus the bar and press ← / → to skip 10 seconds.
+
 ## Artwork
 
 New games get a cover, background and logo automatically from the game's public Steam store page. Only the game name is sent, to Steam's store search. Turn this off in **Settings → Artwork**, or use **Find artwork for all games** there.
