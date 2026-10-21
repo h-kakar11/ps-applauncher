@@ -1,7 +1,7 @@
 # Game Library
 
 Ultra-customisable, check our forks to see what you can do with this!
-<img width="1909" height="1015" alt="fork of ps-applauncher" src="https://github.com/user-attachments/assets/3c129c74-9934-483e-bcce-43a883a99ea1" />
+<a href = "https://github.com/kylehussain/PSLn"><img width="1909" height="1015" alt="fork of ps-applauncher" src="https://github.com/user-attachments/assets/3c129c74-9934-483e-bcce-43a883a99ea1" /></a>
 
 
 A PS5-style, full-screen launcher for the games on your Windows PC. It pulls your library together from Steam, Epic, GOG, Ubisoft, EA, Xbox and plain game folders, then lets you browse and launch them with a controller or keyboard.
