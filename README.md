@@ -1,5 +1,7 @@
 # PS5-style Game Library
 
+This is a fork of ps-applauncher. 
+
 any issues? goto https://github.com/h-kakar11/ps-applauncher/issues
 
 
