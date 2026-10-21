@@ -40,7 +40,25 @@ const ICON = {
   refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/></svg>',
   reset: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.3-5.7M4 4v4h4"/></svg>',
   trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>',
+  starOutline: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.8l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.2l6.1-.8z"/></svg>',
+  note: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M5 3.5h10l4 4V20.5H5z"/><path d="M15 3.5v4h4M8.5 12h7M8.5 15.5h7"/></svg>',
+  close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+  pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M9 3h6l-1 6 3 3H7l3-3zM12 12v9"/></svg>',
+  flame: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3.2 2-4 .2 1.2.8 2 1.700 2.200C10.200 8 11 5.500 12 3z"/></svg>',
+  stats: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.500h16M7 16v-5M12 16V6M17 16v-8"/></svg>',
+  stop: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>',
+  window: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9.500h18"/></svg>',
+  shuffle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h3.500c5 0 6 10 11 10H21M3 17h3.500c1.700 0 2.900-1 3.900-2.300M14 8.300C14.900 7.500 16 7 17.500 7H21M18.500 4.500 21 7l-2.500 2.500M18.500 14.500 21 17l-2.500 2.500"/></svg>',
+  bolt: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 5 13.500h5.500L9.500 22 19 10h-6z"/></svg>',
+  discord: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.600 5.400A16.500 16.500 0 0 0 15.500 4l-.5 1a15 15 0 0 0-6 0l-.5-1a16.500 16.500 0 0 0-4.100 1.400C1.800 9.400 1.100 13.300 1.400 17.100a16.600 16.600 0 0 0 5 2.500l1.100-1.800c-.6-.2-1.200-.5-1.700-.9l.4-.3a11.900 11.900 0 0 0 11.600 0l.4.300c-.5.400-1.100.7-1.700.9l1.100 1.800a16.500 16.500 0 0 0 5-2.500c.4-4.400-.7-8.300-3-11.700zM8.700 14.800c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2zm6.600 0c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2z"/></svg>',
+  wallpaper: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 14l5-4 5 4 3-2 5 4M8 21h8"/></svg>',
+  cup: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 3h10v6a5 5 0 0 1-3.500 4.800V16H16v2H8v-2h2.500v-2.200A5 5 0 0 1 7 9z"/><path d="M7 5H3.500v1.500A3.500 3.500 0 0 0 7 10zM17 5h3.500v1.500A3.500 3.500 0 0 1 17 10zM8 19.500h8V21H8z"/></svg>',
 };
+
+const TIER_LABEL = { bronze: 'Bronze', silver: 'Silver', gold: 'Gold', platinum: 'Platinum' };
+const STATUS_LABEL = { '': 'No status', backlog: 'Backlog', playing: 'Playing', completed: 'Completed', dropped: 'Dropped', hold: 'On hold' };
+const tierIcon = (tier, cls = '') => `<span class="tier tier--${tier} ${cls}" title="${TIER_LABEL[tier] || ''}">${ICON.cup}</span>`;
 
 function fmtBytes(b) {
   if (b == null || !isFinite(b)) return '—';
@@ -69,6 +87,17 @@ function fmtRelative(ts) {
   return fmtDate(ts);
 }
 
+const fmtTime = (ts) => new Date(ts).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+const fmtDay = (ts) => new Date(ts).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+// "2h 05m" style, for places that need minutes as well as hours.
+function fmtHM(ms) {
+  if (ms < 60000) return `${Math.max(1, Math.round(ms / 1000))}s`;
+  const m = Math.round(ms / 60000);
+  if (m < 60) return `${m}m`;
+  return `${Math.floor(m / 60)}h ${pad(m % 60)}m`;
+}
+const stars = (n) => [1, 2, 3, 4, 5].map((i) => `<i class="star${i <= n ? ' is-on' : ''}">${ICON.star}</i>`).join('');
+
 async function api(url, { method = 'GET', json, body, headers } = {}) {
   const opts = { method, headers: headers || {} };
   if (json !== undefined) { opts.body = JSON.stringify(json); opts.headers['Content-Type'] = 'application/json'; }
@@ -90,10 +119,11 @@ function toast(msg, ms = 3200) {
 
 /* ======================= State ======================= */
 const state = {
-  games: [], drives: {}, busy: {},
-  settings: { clock24: true, gamesRoot: '', sounds: true, autoArtwork: true, profileName: '' },
-  view: 'home', selectedId: null, libSelectedId: null, items: [],
-  sort: 'recent', query: '', device: 'pad', offline: false,
+  games: [], drives: {}, busy: {}, wallpapers: [], trophies: null, discord: null,
+  settings: { clock24: true, showSeconds: true, gamesRoot: '', gameFolders: [], sounds: true, soundVolume: 70, autoArtwork: true, profileName: '', avatarColor: 'blue', confirmButton: 'cross', stickDeadzone: 'normal', rumble: true, lowBatteryWarn: 20, uiScale: 100, animations: 'full', backgroundDim: 0, homeOrder: 'recent', startOn: 'game', wallpaperMode: 'scene', wallpaperId: '', wallpaperInterval: 5, wallpaperSymbols: false, confirmClose: true, trophyPopups: true, weeklyGoalHours: 0 },
+  view: 'home', prevView: 'home', selectedId: null, libSelectedId: null, items: [],
+  sort: 'recent', filter: 'all', query: '', device: 'pad', offline: false,
+  eventSeq: null,
 };
 const byId = (id) => state.games.find((g) => g.id === id);
 
@@ -110,23 +140,59 @@ function sortedGames(mode) {
   switch (mode) {
     case 'name': return list.sort(byName);
     case 'played': return list.sort((a, b) => b.playMs - a.playMs || byName(a, b));
+    case 'rating': return list.sort((a, b) => b.rating - a.rating || byName(a, b));
     case 'size': return list.sort((a, b) => (b.sizeBytes || 0) - (a.sizeBytes || 0) || byName(a, b));
     default: return list.sort((a, b) => recentKey(b) - recentKey(a) || byName(a, b));
   }
 }
 
+// The games on the home carousel, in the order chosen in Settings.
+function homeGames() {
+  const recent = sortedGames('recent');
+  switch (state.settings.homeOrder) {
+    case 'favorites': return [...recent.filter((g) => g.favorite), ...recent.filter((g) => !g.favorite)];
+    case 'name': return sortedGames('name');
+    case 'played': return sortedGames('played');
+    default: return recent;
+  }
+}
+
 async function refresh() {
   try {
-    const s = await api('/api/state');
+    const s = await api(`/api/state${state.eventSeq === null ? '' : `?since=${state.eventSeq}`}`);
+    const firstLoad = state.eventSeq === null;
     state.games = s.games;
     state.settings = s.settings;
     state.drives = s.drives;
     state.busy = s.busy || {};
+    state.wallpapers = s.wallpapers || [];
+    state.trophies = s.trophies;
+    state.discord = s.discord;
+    state.ignored = s.ignored;
+    state.eventSeq = s.eventSeq;
     if (state.offline) { state.offline = false; toast('Reconnected'); }
+    applyPreferences();
     renderAll();
+    if (!firstLoad) handleEvents(s.events || []);
+    afterRefresh();
   } catch {
     if (!state.offline) { state.offline = true; toast('The library service stopped. Reopen the app to reconnect.', 8000); }
   }
+}
+
+const refreshHooks = [];
+function afterRefresh() {
+  for (const fn of refreshHooks) { try { fn(); } catch (e) { console.error(e); } }
+}
+
+// Applies the look-and-feel settings that live on the page itself.
+function applyPreferences() {
+  const s = state.settings, root = document.documentElement;
+  root.style.setProperty('--ui-scale', String(s.uiScale / 100));
+  root.style.setProperty('--dim', String(s.backgroundDim / 100));
+  root.dataset.motion = s.animations;
+  const circle = s.confirmButton === 'circle';
+  $$('[data-glyph]').forEach((g) => { g.textContent = (g.dataset.glyph === 'confirm') === !circle ? '✕' : '○'; });
 }
 
 /* ======================= Sound ======================= */
@@ -140,7 +206,9 @@ const sfx = (() => {
       // Skip rather than queue while audio is still locked, so cues never pile up.
       if (ctx.state !== 'running') { ctx.resume(); return; }
       const t0 = ctx.currentTime + 0.01;
-      for (const [freq, at, dur, gain, glideTo] of notes) {
+      const volume = (state.settings.soundVolume || 70) / 70;
+      for (const [freq, at, dur, rawGain, glideTo] of notes) {
+        const gain = rawGain * volume;
         const o = ctx.createOscillator();
         const g = ctx.createGain();
         o.type = 'sine';
@@ -161,47 +229,101 @@ const sfx = (() => {
     back: () => play([[1174.7, 0, 0.12, 0.026, 830.6]]),
     bump: () => play([[392, 0, 0.07, 0.02]]),
     launch: () => play([[659.3, 0, 0.6, 0.026], [987.8, 0.09, 0.6, 0.022], [1318.5, 0.18, 0.8, 0.018], [1975.5, 0.27, 0.9, 0.01]]),
+    trophy: () => play([[1318.5, 0, 0.5, 0.03], [1760, 0.12, 0.6, 0.026], [2637, 0.26, 0.9, 0.022], [3520, 0.4, 1.1, 0.012]]),
+    platinum: () => play([[784, 0, 0.7, 0.03], [1046.5, 0.12, 0.7, 0.028], [1318.5, 0.24, 0.8, 0.026], [1568, 0.36, 0.9, 0.024], [2093, 0.5, 1.4, 0.02], [3136, 0.62, 1.6, 0.012]]),
+    alert: () => play([[880, 0, 0.14, 0.03], [660, 0.16, 0.2, 0.03]]),
   };
 })();
 
 /* ======================= Backdrop ======================= */
 let bgFront = $('#bg-a'), bgBack = $('#bg-b'), bgTimer;
+const bgVideo = $('#bg-video');
 const backdrop = { key: null };
+
+function hideVideo() {
+  if (!bgVideo.classList.contains('is-visible')) return;
+  bgVideo.classList.remove('is-visible');
+  setTimeout(() => {
+    if (bgVideo.classList.contains('is-visible')) return;
+    bgVideo.pause();
+    bgVideo.removeAttribute('src');
+    bgVideo.load();
+  }, 800);
+}
 
 function showScene(mode) {
   const key = `scene:${mode}`;
   if (backdrop.key === key) return;
   backdrop.key = key;
   clearTimeout(bgTimer);
+  hideVideo();
   const scene = $('#scene');
   scene.classList.toggle('scene--quiet', mode === 'quiet');
+  scene.classList.remove('scene--overlay');
   scene.classList.add('is-visible');
   bgFront.classList.remove('is-visible');
   bgBack.classList.remove('is-visible');
   $('#scrim').classList.remove('is-visible');
 }
 
-function showImage(url, ambient) {
-  const key = `${ambient ? 'ambient' : 'photo'}:${url}`;
-  if (backdrop.key === key) return;
-  backdrop.key = key;
+// Loads an image into the hidden layer, then cross-fades to it. Animated GIFs just work as CSS backgrounds.
+function crossfade(url, key, { ambient = false, symbols = false } = {}) {
   clearTimeout(bgTimer);
   bgTimer = setTimeout(() => {
     const img = new Image();
     img.onload = () => {
       if (backdrop.key !== key) return;
       bgBack.style.backgroundImage = `url("${url}")`;
-      bgBack.classList.toggle('is-ambient', !!ambient);
+      bgBack.classList.toggle('is-ambient', ambient);
       bgBack.classList.remove('is-visible');
       void bgBack.offsetWidth; // restart the settle animation
       bgBack.classList.add('is-visible');
       bgFront.classList.remove('is-visible');
       [bgFront, bgBack] = [bgBack, bgFront];
-      $('#scene').classList.remove('is-visible');
+      $('#scene').classList.toggle('is-visible', symbols);
       $('#scrim').classList.add('is-visible');
     };
     img.src = url;
   }, 90);
+}
+
+function showImage(url, ambient) {
+  const key = `${ambient ? 'ambient' : 'photo'}:${url}`;
+  if (backdrop.key === key) return;
+  backdrop.key = key;
+  hideVideo();
+  $('#scene').classList.remove('scene--overlay');
+  crossfade(url, key, { ambient });
+}
+
+// A user wallpaper (image, GIF or video), optionally with the floating symbols drifting over it.
+function showWallpaper(w, { symbols = false } = {}) {
+  const key = `wall:${w.id}:${symbols ? 1 : 0}`;
+  if (backdrop.key === key) return;
+  backdrop.key = key;
+  clearTimeout(bgTimer);
+  const scene = $('#scene');
+  scene.classList.remove('scene--quiet');
+  scene.classList.toggle('scene--overlay', symbols);
+  $('#scrim').classList.add('is-visible');
+  const calm = state.settings.animations === 'reduced';
+  if (w.type === 'video') {
+    bgFront.classList.remove('is-visible');
+    bgBack.classList.remove('is-visible');
+    scene.classList.toggle('is-visible', symbols);
+    if (bgVideo.getAttribute('src') !== w.url) bgVideo.src = w.url;
+    bgVideo.onloadeddata = () => { if (state.settings.animations === 'reduced') bgVideo.pause(); };
+    bgVideo.play().then(() => { if (calm) bgVideo.pause(); }).catch(() => {});
+    bgVideo.classList.add('is-visible');
+    return;
+  }
+  hideVideo();
+  // With reduced animations an animated GIF is shown as a still frame.
+  if (calm && w.ext === 'gif') {
+    stillFrame(w.url).then((still) => { if (backdrop.key === key) crossfade(still, key, { symbols }); });
+    return;
+  }
+  crossfade(w.url, key, { symbols });
 }
 
 function backdropFor(g) {
@@ -212,7 +334,12 @@ function backdropFor(g) {
 
 function updateBackdrop() {
   if (state.view === 'library') return backdropFor(byId(state.libSelectedId));
-  if (state.selectedId === EXPLORE_ID) return showScene('full');
+  if (state.view === 'stats') return showScene('quiet');
+  if (state.view === 'settings') return previewingWallpaper() ? showWallpaper(state.wallpaperPreview) : showScene('quiet');
+  if (state.selectedId === EXPLORE_ID) {
+    const w = activeWallpaper();
+    return w ? showWallpaper(w, { symbols: state.settings.wallpaperSymbols }) : showScene('full');
+  }
   backdropFor(byId(state.selectedId));
 }
 
@@ -266,7 +393,7 @@ function buildScene() {
 
 /* ======================= Carousel ======================= */
 function carouselItems() {
-  const games = sortedGames('recent');
+  const games = homeGames();
   return [
     { id: EXPLORE_ID, kind: 'explore', name: 'Explore' },
     ...games.map((g) => ({ id: g.id, kind: 'game', name: g.name, g })),
@@ -285,7 +412,7 @@ function tileHtml(item) {
   if (item.kind === 'game') {
     const g = item.g;
     return `<button class="tile${g.exeExists ? '' : ' is-missing'}" data-nav data-id="${g.id}" aria-label="${esc(g.name)}">
-      ${artHtml(g)}${g.status === 'running' ? '<span class="tile-dot" title="Playing"></span>' : ''}
+      ${artHtml(g)}${g.favorite ? `<span class="tile-fav" title="Favorite">${ICON.star}</span>` : ''}${g.status === 'running' ? '<span class="tile-dot" title="Playing"></span>' : ''}
       <span class="tile-label">${esc(g.name)}</span></button>`;
   }
   const icon = { explore: ICON.explore, library: ICON.library, add: ICON.plus }[item.kind];
@@ -300,7 +427,7 @@ function renderCarousel() {
     state.selectedId = items.find((i) => i.kind === 'game')?.id ?? EXPLORE_ID;
   }
   const track = $('#track');
-  const sig = JSON.stringify(items.map((i) => [i.id, i.name, i.g?.cover, i.g?.status, i.g?.exeExists]));
+  const sig = JSON.stringify(items.map((i) => [i.id, i.name, i.g?.cover, i.g?.status, i.g?.exeExists, i.g?.favorite]));
   if (track.dataset.sig !== sig) {
     const hadFocus = track.contains(document.activeElement);
     track.dataset.sig = sig;
@@ -344,6 +471,8 @@ function activateItem(id) {
   if (id === LIBRARY_ID) return setView('library');
   if (id === ADD_ID) return openGameEditor(null);
   if (id === EXPLORE_ID) return focusEl($('#stage [data-nav]'));
+  const g = byId(id);
+  if (g?.status === 'running') return resumeGame(id);
   launchGame(id);
 }
 
@@ -374,22 +503,32 @@ function renderStage() {
 
 function gameHeroHtml(g) {
   const running = g.status === 'running';
+  const starting = g.status === 'starting';
   const meta = [];
   if (running) meta.push(`<span class="meta-item meta-live">Playing <span data-elapsed-since="${g.runningSince}"></span></span>`);
-  else if (g.status === 'starting') meta.push('<span class="meta-item meta-live">Starting…</span>');
-  if (!g.exeExists) meta.push('<span class="meta-item meta-warn">Executable not found</span>');
+  else if (starting) meta.push('<span class="meta-item meta-live">Starting…</span>');
+  if (!g.exeExists) meta.push(`<span class="meta-item meta-warn">${g.launch.type === 'exe' ? 'Executable not found' : 'Game folder not found'}</span>`);
   if (g.playMs >= 60000) meta.push(`<span class="meta-item">${ICON.clock}${fmtDuration(g.playMs)} played</span>`);
   else if (!running) meta.push(`<span class="meta-item">${ICON.clock}Not played yet</span>`);
   if (g.sizeBytes != null || g.sizing) meta.push(`<span class="meta-item">${ICON.drive}${g.sizeBytes != null ? fmtBytes(g.sizeBytes) : 'Calculating…'}</span>`);
+  if (g.progress) meta.push(`<span class="meta-item meta-status meta-status--${g.progress}">${STATUS_LABEL[g.progress]}</span>`);
+  if (g.rating) meta.push(`<span class="meta-item meta-stars" title="${g.rating} of 5">${stars(g.rating)}</span>`);
+  if (g.trophies.total) meta.push(`<span class="meta-item meta-trophy${g.trophies.platinum ? ' is-platinum' : ''}">${ICON.cup}${g.trophies.done}/${g.trophies.total}${g.trophies.platinum ? ' · Platinum' : ` · ${g.trophies.percent}%`}</span>`);
+  const circle = (key, action, label, icon, badge) => `<button class="btn btn-circle has-label" data-nav data-key="${key}" data-action="${action}" data-label="${label}" aria-label="${label}">${icon}${badge ? `<b class="badge">${badge}</b>` : ''}</button>`;
   return `
     <div class="hero">
       ${g.logo ? `<img class="hero-logo" src="${esc(g.logo)}" alt="${esc(g.name)}">` : `<h1 class="hero-title">${esc(g.name)}</h1>`}
       <p class="hero-meta">${meta.join('<span class="meta-sep"></span>')}</p>
+      ${g.notePreview ? `<p class="hero-note">${ICON.note}<span>${esc(g.notePreview)}</span></p>` : ''}
       <div class="hero-actions">
         ${g.exeExists
-          ? `<button class="btn btn-primary btn-play" data-nav data-key="play" data-action="play">${running ? 'Running' : 'Play'}</button>`
+          ? `<button class="btn btn-primary btn-play" data-nav data-key="play" data-action="play">${running ? 'Resume' : starting ? 'Starting…' : 'Play'}</button>`
           : `<button class="btn btn-primary btn-play" data-nav data-key="edit" data-action="edit">Fix path</button>`}
-        <button class="btn btn-circle" data-nav data-key="more" data-action="menu" aria-label="Options">${ICON.more}</button>
+        ${circle('fav', 'favorite', g.favorite ? 'Remove favorite' : 'Favorite', g.favorite ? ICON.star : ICON.starOutline)}
+        ${circle('trophies', 'trophies', 'Trophies', ICON.cup, g.trophies.total ? `${g.trophies.done}` : '')}
+        ${circle('notes', 'notes', 'Notes', ICON.note, g.notes ? g.notes : '')}
+        ${circle('stats', 'game-stats', 'Playtime', ICON.stats)}
+        ${circle('more', 'menu', 'Options', ICON.more)}
       </div>
     </div>`;
 }
@@ -460,17 +599,6 @@ function barsHtml(daily) {
     <div class="bar-labels">${labels.map((l) => `<span>${l}</span>`).join('')}</div>`;
 }
 
-function controllerNames() {
-  return [...(navigator.getGamepads?.() || [])].filter(Boolean).map((p) => {
-    const s = p.id.toLowerCase();
-    if (s.includes('dualsense') || (s.includes('054c') && /0ce6|0df2/.test(s))) return s.includes('0df2') || s.includes('edge') ? 'DualSense Edge' : 'DualSense';
-    if (s.includes('054c') || s.includes('dualshock')) return 'DualShock 4';
-    if (/xinput|xbox|045e/.test(s)) return 'Xbox Controller';
-    if (s.includes('057e') || s.includes('pro controller')) return 'Pro Controller';
-    return p.id.split('(')[0].trim().slice(0, 22) || 'Controller';
-  });
-}
-
 function rootDrive() {
   const root = (state.settings.gamesRoot || '').slice(0, 3).toUpperCase();
   return state.drives[root] ? root : Object.keys(state.drives)[0];
@@ -486,6 +614,23 @@ function mediaWidget(g, { key, kicker, icon, line, i }) {
   </article>`;
 }
 
+function trophyWidgetHtml(i) {
+  const t = state.trophies;
+  if (!t || !t.games) {
+    return `<article tabindex="0" class="widget w-trophies" data-nav data-key="w-trophies" style="--i:${i}">
+      <h3 class="w-title">${ICON.cup}Trophies</h3>
+      <p class="w-empty">Open a game and tick off trophies to build your trophy level</p></article>`;
+  }
+  const tiers = ['platinum', 'gold', 'silver', 'bronze'];
+  return `<article tabindex="0" class="widget w-trophies" data-nav data-key="w-trophies" style="--i:${i}">
+    <h3 class="w-title">${ICON.cup}Trophies<span class="w-aside">${t.points.toLocaleString()} points</span></h3>
+    <div class="w-tiers">${tiers.map((k) => `<div>${tierIcon(k)}<b>${t.unlocked[k]}</b></div>`).join('')}</div>
+    <div class="w-level"><span class="w-level-name">${ICON.star}Level ${t.level}</span><span class="w-level-pct">Next level ${t.levelPercent}%</span></div>
+    <div class="w-progress"><span style="width:${t.levelPercent}%"></span></div>
+    <ul class="w-recent">${t.recent.slice(0, 3).map((r) => `<li>${tierIcon(r.tier)}<span><b>${esc(r.title)}</b><small>${esc(r.game)}</small></span></li>`).join('')}</ul>
+  </article>`;
+}
+
 function exploreHtml() {
   const t = totals();
   const hours = t.play / 3600000;
@@ -497,11 +642,7 @@ function exploreHtml() {
   const feature = top && top.id !== recent?.id ? top : sortedGames('size').find((g) => g.id !== recent?.id) || top;
   const isTop = !!top && feature === top;
   const newest = [...t.games].sort((a, b) => b.addedAt - a.addedAt)[0] || null;
-  const pads = controllerNames();
-  const devices = [
-    pads[0] ? { icon: ICON.gamepad, name: pads[0], sub: 'Connected', on: true } : { icon: ICON.gamepad, name: 'Controller', sub: 'Press a button', on: false },
-    pads[1] ? { icon: ICON.gamepad, name: pads[1], sub: 'Connected', on: true } : { icon: ICON.keyboard, name: 'Keyboard', sub: 'Ready', on: true },
-  ];
+  const devices = deviceCards();
   const driveRoot = rootDrive();
   const drive = state.drives[driveRoot];
   const onDrive = sum(t.games.filter((g) => g.drive === driveRoot).map((g) => g.sizeBytes || 0));
@@ -526,7 +667,7 @@ function exploreHtml() {
           <div class="w-progress"><span style="width:${pct}%"></span></div>
         </article>
         <article tabindex="0" class="widget w-devices" data-nav data-key="w-devices" style="--i:1">
-          ${devices.map((d) => `<div class="w-device"><span class="w-device-ring${d.on ? ' is-on' : ''}">${d.icon}</span><span class="w-device-text"><b>${esc(d.name)}</b><small>${d.sub}</small></span></div>`).join('')}
+          ${devices.map((d) => `<div class="w-device"><span class="w-device-ring${d.on ? ' is-on' : ''}${d.low ? ' is-low' : ''}">${d.icon}</span><span class="w-device-text"><b>${esc(d.name)}</b><small>${d.sub}</small></span></div>`).join('')}
         </article>
         <article tabindex="0" class="widget w-storage" data-nav data-key="w-storage" style="--i:2">
           <div class="w-storage-text">
@@ -572,8 +713,9 @@ function exploreHtml() {
           </div>
         </article>
       </div>
+      <div class="w-col">${trophyWidgetHtml(9)}</div>
       <div class="w-col w-col--narrow">
-        <article tabindex="0" class="widget w-library" data-nav data-key="w-library" data-open="library" style="--i:8">
+        <article tabindex="0" class="widget w-library" data-nav data-key="w-library" data-open="library" style="--i:10">
           <h3 class="w-title">${ICON.library}Game library</h3>
           <div class="w-mosaic">${[0, 1, 2, 3].map((n) => {
             const g = mosaic[n];
@@ -584,7 +726,7 @@ function exploreHtml() {
         </article>
       </div>
       <div class="w-col">
-        <article tabindex="0" class="widget w-alloc" data-nav data-key="w-alloc" style="--i:9">
+        <article tabindex="0" class="widget w-alloc" data-nav data-key="w-alloc" style="--i:11">
           <h3 class="w-title">${ICON.pie}Allocation<span class="w-aside">${fmtBytes(t.size)}</span></h3>
           ${sized.length ? `<ul class="alloc">${sized.slice(0, 6).map((g) => `
             <li><div class="alloc-row"><span>${esc(g.name)}</span><span>${fmtBytes(g.sizeBytes)}</span></div>
@@ -596,28 +738,67 @@ function exploreHtml() {
 }
 
 /* ======================= Library view ======================= */
+const FILTERS = [
+  ['all', 'All'], ['favorites', 'Favorites'], ['playing', 'Playing'], ['backlog', 'Backlog'], ['completed', 'Completed'],
+  ['hold', 'On hold'], ['dropped', 'Dropped'], ['unplayed', 'Not played'], ['attention', 'Needs attention'],
+];
+const filterMatch = {
+  all: () => true,
+  favorites: (g) => g.favorite,
+  playing: (g) => g.progress === 'playing' || g.status === 'running',
+  backlog: (g) => g.progress === 'backlog',
+  completed: (g) => g.progress === 'completed',
+  hold: (g) => g.progress === 'hold',
+  dropped: (g) => g.progress === 'dropped',
+  unplayed: (g) => g.playMs < 60000,
+  attention: (g) => !g.exeExists,
+};
+
+function libBadges(g) {
+  const bits = [];
+  if (g.favorite) bits.push(`<span class="lib-badge lib-badge--fav">${ICON.star}</span>`);
+  if (g.trophies.total) bits.push(`<span class="lib-badge${g.trophies.platinum ? ' is-platinum' : ''}">${ICON.cup}${g.trophies.done}/${g.trophies.total}</span>`);
+  if (!g.exeExists) bits.push('<span class="lib-badge lib-badge--warn">Missing</span>');
+  return bits.length ? `<span class="lib-badges">${bits.join('')}</span>` : '';
+}
+
 function renderLibrary() {
   $$('#sort-chips .chip').forEach((c) => c.classList.toggle('is-active', c.dataset.sort === state.sort));
   const t = totals();
   $('#library-summary').textContent = `${t.count} ${t.count === 1 ? 'game' : 'games'} · ${fmtBytes(t.size)} · ${fmtDuration(t.play)} played`;
 
+  // Only offer filters that have something in them.
+  const counts = Object.fromEntries(FILTERS.map(([k]) => [k, state.games.filter(filterMatch[k]).length]));
+  if (state.filter !== 'all' && !counts[state.filter]) state.filter = 'all';
+  const chips = $('#filter-chips');
+  const chipSig = JSON.stringify([state.filter, FILTERS.map(([k]) => counts[k] > 0 || k === 'all')]);
+  if (chips.dataset.sig !== chipSig) {
+    const focused = chips.contains(document.activeElement) ? document.activeElement.dataset.filter : null;
+    chips.dataset.sig = chipSig;
+    chips.innerHTML = FILTERS.filter(([k]) => k === 'all' || counts[k] > 0)
+      .map(([k, label]) => `<button class="chip${state.filter === k ? ' is-active' : ''}" data-nav data-filter="${k}">${label}${k === 'all' ? '' : ` <span class="chip-count">${counts[k]}</span>`}</button>`).join('');
+    if (focused) chips.querySelector(`[data-filter="${focused}"]`)?.focus({ preventScroll: true });
+  }
+
   const q = state.query.trim().toLowerCase();
-  const games = sortedGames(state.sort).filter((g) => !q || g.name.toLowerCase().includes(q));
+  const games = sortedGames(state.sort).filter((g) => filterMatch[state.filter](g) && (!q || g.name.toLowerCase().includes(q)));
   const grid = $('#library-grid');
-  const sig = JSON.stringify([q, state.sort, games.map((g) => [g.id, g.name, g.cover, g.status, Math.floor(g.playMs / 360000), g.sizeBytes])]);
+  const sig = JSON.stringify([q, state.sort, state.filter, games.map((g) => [g.id, g.name, g.cover, g.status, Math.floor(g.playMs / 360000), g.sizeBytes, g.favorite, g.trophies.done, g.trophies.total, g.exeExists])]);
   if (grid.dataset.sig === sig) return;
   const focusedId = grid.contains(document.activeElement) ? document.activeElement.dataset.id : null;
   grid.dataset.sig = sig;
   grid.innerHTML = games.length
     ? games.map((g) => `
       <button class="lib-card${g.status === 'running' ? ' is-running' : ''}" data-nav data-id="${g.id}">
-        <span class="lib-art">${artHtml(g)}</span>
+        <span class="lib-art">${artHtml(g)}${libBadges(g)}</span>
         <span class="lib-name">${esc(g.name)}</span>
         <span class="lib-meta">${g.status === 'running' ? 'Playing now' : `${g.playMs >= 60000 ? fmtDuration(g.playMs) : 'Not played'} · ${g.sizeBytes != null ? fmtBytes(g.sizeBytes) : '…'}`}</span>
       </button>`).join('')
     : `<div class="empty">${q
         ? `<h2>No games match “${esc(state.query)}”</h2><p class="muted">Try a different name.</p>`
-        : `<h2>No games yet</h2><p class="muted">Add a game or scan ${esc(state.settings.gamesRoot)}.</p>`}</div>`;
+        : state.filter !== 'all'
+          ? `<h2>Nothing here yet</h2><p class="muted">No games match this filter.</p>`
+          : `<h2>No games yet</h2><p class="muted">Add a game or scan for games from Settings.</p>`}</div>`;
   if (focusedId) grid.querySelector(`[data-id="${focusedId}"]`)?.focus({ preventScroll: true });
 }
 
@@ -627,47 +808,29 @@ function renderAll() {
   renderLibrary();
 }
 
+const VIEWS = ['home', 'library', 'stats', 'settings'];
+const TAB_ORDER = ['home', 'library', 'stats'];
+
 function setView(view, { focus = true } = {}) {
+  if (view === 'settings' && state.view !== 'settings') state.prevView = state.view;
   state.view = view;
-  $('#view-home').hidden = view !== 'home';
-  $('#view-library').hidden = view !== 'library';
+  for (const v of VIEWS) $(`#view-${v}`).hidden = v !== view;
   $$('.tab').forEach((t) => t.classList.toggle('is-active', t.dataset.view === view));
+  if (view === 'stats') renderStatsView();
+  if (view === 'settings') renderSettingsView();
   updateBackdrop();
-  if (!focus) return;
-  if (view === 'home') focusSelectedTile();
-  else focusEl((state.libSelectedId && $(`#library-grid [data-id="${state.libSelectedId}"]`)) || $('#library-grid [data-nav]') || $('#search'));
+  if (focus) focusView();
 }
 
-/* ======================= Actions ======================= */
-async function launchGame(id) {
-  const g = byId(id);
-  if (!g) return;
-  if (g.status === 'running') return toast(`${g.name} is already running`);
-  if (!g.exeExists) return toast('Executable not found. Edit the game to fix its path.');
-  try {
-    sfx.launch();
-    toast(`Starting ${g.name}…`);
-    await api(`/api/games/${id}/launch`, { method: 'POST' });
-    g.status = 'starting';
-    renderStage();
-    setTimeout(refresh, 3000);
-  } catch (e) {
-    toast(e.message, 5000);
-  }
+function focusView() {
+  const v = state.view;
+  if (v === 'home') return focusSelectedTile();
+  if (v === 'library') return focusEl((state.libSelectedId && $(`#library-grid [data-id="${state.libSelectedId}"]`)) || $('#library-grid [data-nav]') || $('#search'));
+  if (v === 'stats') return focusEl($('#view-stats [data-nav]') || $('.tab.is-active'));
+  focusEl($('#view-settings .rail-item.is-active') || $('#view-settings [data-nav]'));
 }
 
-async function scanFolder() {
-  try {
-    toast(`Scanning ${state.settings.gamesRoot}…`);
-    const { added } = await api('/api/scan', { method: 'POST' });
-    await refresh();
-    toast(added.length ? `Added ${added.length} ${added.length === 1 ? 'game' : 'games'}: ${added.join(', ')}` : 'No new games found', 5000);
-    if (added.length && state.settings.autoArtwork) watchArtwork();
-  } catch (e) {
-    toast(e.message, 5000);
-  }
-}
-
+/* ======================= Navigation helpers ======================= */
 function goToGame(id) {
   if (!byId(id)) return;
   if (state.view !== 'home') setView('home', { focus: false });
@@ -680,6 +843,14 @@ function openSearch() {
   const input = $('#search');
   focusEl(input);
   if (state.device === 'pad') openKeyboard(input);
+}
+
+function toggleFavorite(id) {
+  const g = byId(id);
+  if (!g) return;
+  api(`/api/games/${id}`, { method: 'PATCH', json: { favorite: !g.favorite } })
+    .then(() => { toast(g.favorite ? `${g.name} removed from favorites` : `${g.name} added to favorites`); return refresh(); })
+    .catch((e) => toast(e.message));
 }
 
 /* ======================= Layers (modals) ======================= */
@@ -702,7 +873,7 @@ function closeLayer(layer = topLayer(), result) {
   layer._onClose?.(result);
   const back = layer._returnFocus;
   if (back && document.contains(back)) back.focus({ preventScroll: true });
-  else if (!topLayer()) (state.view === 'home' ? focusSelectedTile() : setView('library'));
+  else if (!topLayer()) focusView();
 }
 
 const topLayer = () => $('#layers').lastElementChild;
@@ -769,7 +940,7 @@ function browseDialog({ title, filter, start }) {
         for (const e of data.entries) {
           rows.push(e.dir
             ? `<button class="menu-item" data-nav data-go-path="${esc(e.path)}">${ICON.folder}${esc(e.name)}</button>`
-            : `<button class="menu-item" data-nav data-pick="${esc(e.path)}">${filter === 'image' ? ICON.image : ICON.file}${esc(e.name)}</button>`);
+            : `<button class="menu-item" data-nav data-pick="${esc(e.path)}">${filter === 'image' || filter === 'wallpaper' ? ICON.image : ICON.file}${esc(e.name)}</button>`);
         }
         if (!data.entries.length) rows.push('<p class="muted" style="padding:1rem">Nothing to show here.</p>');
         const list = layer.querySelector('[data-list]');
@@ -836,38 +1007,87 @@ function artworkSearchDialog(query) {
 function openGameMenu(id) {
   const g = byId(id);
   if (!g) return;
+  const running = g.status === 'running';
+  const item = (m, icon, label, sub = '') => `<button class="menu-item" data-nav data-m="${m}">${icon}${label}${sub ? `<span class="sub">${sub}</span>` : ''}</button>`;
   const layer = openLayer(`
     <div class="modal menu" role="dialog" aria-label="${esc(g.name)} options">
       <h2>${esc(g.name)}</h2>
-      <button class="menu-item" data-nav data-m="play">${ICON.play}Play</button>
-      <button class="menu-item" data-nav data-m="edit">${ICON.edit}Edit details and artwork</button>
-      <button class="menu-item" data-nav data-m="art">${ICON.image}Find artwork online</button>
-      <button class="menu-item" data-nav data-m="folder">${ICON.folder}Open install folder</button>
-      <button class="menu-item" data-nav data-m="size">${ICON.refresh}Recalculate size<span class="sub">${fmtBytes(g.sizeBytes)}</span></button>
-      <button class="menu-item" data-nav data-m="reset">${ICON.reset}Reset play statistics</button>
-      <button class="menu-item" data-nav data-m="remove">${ICON.trash}Remove from library</button>
+      ${item('play', ICON.play, running ? 'Resume game' : 'Play')}
+      ${running ? item('close', ICON.stop, 'Close game') : ''}
+      ${item('stats', ICON.stats, 'Playtime statistics', fmtDuration(g.playMs))}
+      ${item('trophies', ICON.cup, 'Trophies', g.trophies.total ? `${g.trophies.done}/${g.trophies.total}` : 'None yet')}
+      ${item('notes', ICON.note, 'Notes', g.notes ? String(g.notes) : '')}
+      ${item('favorite', g.favorite ? ICON.star : ICON.starOutline, g.favorite ? 'Remove from favorites' : 'Add to favorites')}
+      ${item('progress', ICON.check, 'Status and rating', g.progress ? STATUS_LABEL[g.progress] : '')}
+      ${item('edit', ICON.edit, 'Edit details and launch options')}
+      ${item('art', ICON.image, 'Find artwork online')}
+      ${item('folder', ICON.folder, 'Open install folder')}
+      ${item('size', ICON.refresh, 'Recalculate size', fmtBytes(g.sizeBytes))}
+      ${item('reset', ICON.reset, 'Reset play statistics')}
+      ${item('remove', ICON.trash, 'Remove from library')}
     </div>`);
   layer.addEventListener('click', async (e) => {
     const m = e.target.closest('[data-m]')?.dataset.m;
     if (!m) return;
     closeLayer(layer);
     if (m === 'play') launchGame(id);
+    if (m === 'close') closeGame(id);
+    if (m === 'stats') openGameStats(id);
+    if (m === 'trophies') openTrophies(id);
+    if (m === 'notes') openNotes(id);
+    if (m === 'favorite') toggleFavorite(id);
+    if (m === 'progress') openProgressDialog(id);
     if (m === 'edit') openGameEditor(g);
     if (m === 'art') openGameEditor(g, { findArt: true });
     if (m === 'folder') api(`/api/games/${id}/open-folder`, { method: 'POST' }).catch((err) => toast(err.message));
     if (m === 'size') { await api(`/api/games/${id}/rescan-size`, { method: 'POST' }); toast('Recalculating size…'); setTimeout(refresh, 1500); }
-    if (m === 'reset' && await confirmDialog('Reset play statistics?', `All recorded sessions for ${g.name} will be cleared. This can't be undone.`, 'Reset')) {
+    if (m === 'reset' && await confirmDialog('Reset play statistics?', `All recorded sessions and previous playtime for ${g.name} will be cleared. This can't be undone.`, 'Reset')) {
       await api(`/api/games/${id}/reset-stats`, { method: 'POST' });
       await refresh();
       toast('Play statistics reset');
     }
-    if (m === 'remove' && await confirmDialog('Remove from library?', `${g.name} will be removed from this library. Game files on disk are not touched.`, 'Remove')) {
+    if (m === 'remove' && await confirmDialog('Remove from library?', `${g.name} will be removed from this library and won’t be added again by scans. Game files on disk are not touched.`, 'Remove')) {
       await api(`/api/games/${id}`, { method: 'DELETE' });
       if (state.selectedId === id) state.selectedId = null;
       await refresh();
       toast(`${g.name} removed`);
-      state.view === 'home' ? focusSelectedTile() : setView('library');
+      focusView();
     }
+  });
+}
+
+/* ----- Status and rating ----- */
+function openProgressDialog(id) {
+  const g = byId(id);
+  if (!g) return;
+  const layer = openLayer(`
+    <div class="modal menu" role="dialog" aria-label="Status and rating">
+      <h2>${esc(g.name)}</h2>
+      <div class="field-title">Status</div>
+      <div class="chips chips-wrap" data-status>
+        ${Object.entries(STATUS_LABEL).map(([k, label]) => `<button class="chip${g.progress === k ? ' is-active' : ''}" data-nav data-progress="${k}">${label}</button>`).join('')}
+      </div>
+      <div class="field-title">Your rating</div>
+      <div class="rating-row" data-rating>
+        ${[1, 2, 3, 4, 5].map((n) => `<button class="rate-btn${n <= g.rating ? ' is-on' : ''}" data-nav data-rate="${n}" aria-label="${n} stars">${ICON.star}</button>`).join('')}
+        <button class="btn btn-ghost btn-xs" data-nav data-rate="0">Clear</button>
+      </div>
+      <div class="modal-actions"><button class="btn btn-primary" data-nav data-done autofocus>Done</button></div>
+    </div>`);
+  const save = async (patch) => { await api(`/api/games/${id}`, { method: 'PATCH', json: patch }); await refresh(); };
+  layer.addEventListener('click', async (e) => {
+    const st = e.target.closest('[data-progress]');
+    const rt = e.target.closest('[data-rate]');
+    try {
+      if (st) {
+        await save({ progress: st.dataset.progress });
+        $$('[data-progress]', layer).forEach((c) => c.classList.toggle('is-active', c === st));
+      } else if (rt) {
+        const n = Number(rt.dataset.rate);
+        await save({ rating: n });
+        $$('.rate-btn', layer).forEach((b) => b.classList.toggle('is-on', Number(b.dataset.rate) <= n));
+      } else if (e.target.closest('[data-done]')) closeLayer(layer);
+    } catch (err) { toast(err.message); }
   });
 }
 
@@ -876,6 +1096,9 @@ function openGameEditor(game, { findArt = false } = {}) {
   const isNew = !game;
   const pendingImg = { cover: null, background: null, logo: null }; // { blob } | { url } | { path } | { remove: true }
   let lastSlot = 'cover';
+  let launchType = game?.launch?.type || 'exe';
+  let admin = !!game?.admin;
+  let discord = game?.discord || 'auto';
 
   const slot = (kind, shape) => `
     <div class="slot" data-slot="${kind}">
@@ -889,6 +1112,7 @@ function openGameEditor(game, { findArt = false } = {}) {
         </div>
       </div>
     </div>`;
+  const chipGroup = (name, options, current) => `<div class="chips" data-group="${name}">${options.map(([k, label]) => `<button class="chip${current === k ? ' is-active' : ''}" data-nav data-opt="${k}">${label}</button>`).join('')}</div>`;
 
   const layer = openLayer(`
     <div class="modal modal-wide" role="dialog" aria-label="${isNew ? 'Add game' : 'Edit game'}">
@@ -896,14 +1120,29 @@ function openGameEditor(game, { findArt = false } = {}) {
       <p>${isNew ? 'Pick the game’s executable. The name, install folder and artwork fill in automatically.' : esc(game.name)}</p>
       <div class="editor">
         <div>
-          <label class="field"><span>Executable</span>
+          <div class="field"><span>Launch with</span>
+            ${chipGroup('launch', [['exe', 'Program file'], ['steam', 'Steam'], ['uri', 'Launcher link']], launchType)}</div>
+          <label class="field" data-for="exe"><span>Executable</span>
             <span class="input-row"><input class="input" data-nav data-f="exe" placeholder="A:\\games\\My Game\\game.exe" value="${esc(game?.exe)}">
             <button class="btn btn-secondary btn-sm" data-nav data-browse="exe">Browse</button></span></label>
+          <label class="field" data-for="uri"><span>Launcher link</span>
+            <input class="input" data-nav data-f="launchUri" placeholder="com.epicgames.launcher://apps/…" value="${esc(game?.launch?.uri)}"></label>
+          <label class="field"><span data-steam-label>Steam App ID</span>
+            <input class="input" data-nav data-f="steamAppId" inputmode="numeric" placeholder="e.g. 1145360 (also used for artwork and trophies)" value="${esc(game?.steamAppId)}"></label>
           <label class="field"><span>Name</span><input class="input" data-nav data-f="name" value="${esc(game?.name)}" placeholder="Game name"></label>
-          <label class="field"><span>Install folder (used for size)</span>
+          <label class="field"><span>Install folder (used for size and playtime tracking)</span>
             <span class="input-row"><input class="input" data-nav data-f="folder" value="${esc(game?.folder)}" placeholder="Detected from the executable">
             <button class="btn btn-secondary btn-sm" data-nav data-browse="dir">Browse</button></span></label>
           <label class="field"><span>Launch options (optional)</span><input class="input" data-nav data-f="args" value="${esc(game?.args)}" placeholder="-fullscreen -dx12"></label>
+          <label class="field" data-for="exe"><span>Start in folder (optional)</span>
+            <span class="input-row"><input class="input" data-nav data-f="workDir" value="${esc(game?.workDir)}" placeholder="Defaults to the executable’s folder">
+            <button class="btn btn-secondary btn-sm" data-nav data-browse="work">Browse</button></span></label>
+          <div class="field-row">
+            <div class="field" data-for="exe"><span>Run as administrator</span>${chipGroup('admin', [['1', 'Yes'], ['0', 'No']], admin ? '1' : '0')}</div>
+            <div class="field"><span>Discord status</span>${chipGroup('discord', [['auto', 'Automatic'], ['always', 'Always'], ['never', 'Never']], discord)}</div>
+          </div>
+          <label class="field"><span>Playtime before using the library (hours)</span>
+            <input class="input" data-nav data-f="previousHours" type="number" min="0" step="0.5" value="${game?.importedMs ? Math.round(game.importedMs / 360000) / 10 : ''}" placeholder="0"></label>
           <p class="form-error" data-error></p>
         </div>
         <div>
@@ -923,6 +1162,12 @@ function openGameEditor(game, { findArt = false } = {}) {
 
   const f = (k) => layer.querySelector(`[data-f="${k}"]`);
   const objectUrls = [];
+  function syncLaunch() {
+    $$('[data-for]', layer).forEach((el) => { el.hidden = el.dataset.for !== launchType && !(el.dataset.for === 'exe' && launchType === 'exe'); });
+    layer.querySelector('[data-steam-label]').textContent = launchType === 'steam' ? 'Steam App ID (required)' : 'Steam App ID (optional: artwork and trophies)';
+    $$('[data-group="launch"] .chip', layer).forEach((c) => c.classList.toggle('is-active', c.dataset.opt === launchType));
+  }
+  syncLaunch();
   function paintSlot(kind) {
     const btn = layer.querySelector(`[data-choose="${kind}"]`);
     const p = pendingImg[kind];
@@ -962,6 +1207,7 @@ function openGameEditor(game, { findArt = false } = {}) {
       const found = IMAGE_KINDS.filter((k) => a[k]);
       found.forEach((k) => setImg(k, { url: a[k] }));
       if (!f('name').value.trim()) f('name').value = pick.name;
+      if (!f('steamAppId').value.trim()) f('steamAppId').value = String(pick.appid);
       toast(found.length ? `Found ${found.map((k) => KIND_LABEL[k].toLowerCase()).join(', ')} for ${pick.name}` : 'No artwork found for that game');
     } catch (e) {
       toast(e.message);
@@ -989,6 +1235,15 @@ function openGameEditor(game, { findArt = false } = {}) {
   });
 
   layer.addEventListener('click', async (e) => {
+    const opt = e.target.closest('[data-opt]');
+    if (opt) {
+      const group = opt.closest('[data-group]').dataset.group;
+      if (group === 'launch') { launchType = opt.dataset.opt; syncLaunch(); return; }
+      if (group === 'admin') admin = opt.dataset.opt === '1';
+      if (group === 'discord') discord = opt.dataset.opt;
+      $$('.chip', opt.parentElement).forEach((c) => c.classList.toggle('is-active', c === opt));
+      return;
+    }
     const t = e.target.closest('button');
     if (!t) return;
     if (t.dataset.choose) { fileInput.dataset.kind = t.dataset.choose; fileInput.click(); }
@@ -1006,6 +1261,9 @@ function openGameEditor(game, { findArt = false } = {}) {
     } else if (t.dataset.browse === 'dir') {
       const p = await browseDialog({ title: 'Choose the install folder', filter: 'dir', start: f('folder').value || state.settings.gamesRoot });
       if (p) f('folder').value = p;
+    } else if (t.dataset.browse === 'work') {
+      const p = await browseDialog({ title: 'Choose the start-in folder', filter: 'dir', start: f('workDir').value || f('folder').value || state.settings.gamesRoot });
+      if (p) f('workDir').value = p;
     } else if (t.hasAttribute('data-cancel')) closeLayer(layer);
     else if (t.hasAttribute('data-save')) save(t);
   });
@@ -1013,8 +1271,15 @@ function openGameEditor(game, { findArt = false } = {}) {
   async function save(btn) {
     const err = layer.querySelector('[data-error]');
     err.textContent = '';
-    const body = { name: f('name').value.trim(), exe: f('exe').value.trim(), folder: f('folder').value.trim(), args: f('args').value.trim() };
-    if (!body.exe) { err.textContent = 'Choose the game’s executable.'; return focusEl(f('exe')); }
+    const steamAppId = f('steamAppId').value.trim();
+    const body = {
+      name: f('name').value.trim(), launchType, exe: f('exe').value.trim(), folder: f('folder').value.trim(), args: f('args').value.trim(),
+      workDir: f('workDir').value.trim(), admin, discord, steamAppId, launchId: steamAppId, launchUri: f('launchUri').value.trim(),
+      previousHours: f('previousHours').value.trim() || 0,
+    };
+    if (launchType === 'exe' && !body.exe) { err.textContent = 'Choose the game’s executable.'; return focusEl(f('exe')); }
+    if (launchType === 'steam' && !steamAppId) { err.textContent = 'Enter the Steam App ID.'; return focusEl(f('steamAppId')); }
+    if (launchType === 'uri' && !body.launchUri) { err.textContent = 'Enter the launcher link.'; return focusEl(f('launchUri')); }
     if (!body.name) { err.textContent = 'Give the game a name.'; return focusEl(f('name')); }
     btn.disabled = true;
     try {
@@ -1052,111 +1317,6 @@ function openGameEditor(game, { findArt = false } = {}) {
   if (findArt) findArtwork();
 }
 
-/* ----- Settings ----- */
-function openSettings() {
-  const s = state.settings;
-  const toggle = (setting, on, labels = ['On', 'Off']) => `
-    <div class="chips">
-      <button class="chip${on ? ' is-active' : ''}" data-nav data-set="${setting}" data-val="1">${labels[0]}</button>
-      <button class="chip${on ? '' : ' is-active'}" data-nav data-set="${setting}" data-val="0">${labels[1]}</button>
-    </div>`;
-  const layer = openLayer(`
-    <div class="modal" role="dialog" aria-label="Settings">
-      <h2>Settings</h2>
-      <section class="settings-section">
-        <h3>Profile</h3>
-        <input class="input" data-nav data-profile value="${esc(s.profileName)}" placeholder="Your name" maxlength="40">
-      </section>
-      <section class="settings-section">
-        <h3>Games folder</h3>
-        <div class="input-row">
-          <input class="input" data-nav data-root value="${esc(s.gamesRoot)}">
-          <button class="btn btn-secondary btn-sm" data-nav data-s="browse">Browse</button>
-        </div>
-        <div class="input-row" style="margin-top:1.25rem;padding:.25rem">
-          <button class="btn btn-primary btn-sm" data-nav data-s="scan">Scan for new games</button>
-          <button class="btn btn-ghost btn-sm" data-nav data-s="add">Add game manually</button>
-        </div>
-      </section>
-      <section class="settings-section">
-        <h3>Artwork</h3>
-        <div class="settings-grid">
-          <div><h4>Download artwork for new games</h4>${toggle('autoArtwork', s.autoArtwork)}</div>
-          <div><h4>Missing artwork</h4><button class="btn btn-ghost btn-sm" data-nav data-s="art-all">Find artwork for all games</button></div>
-        </div>
-      </section>
-      <section class="settings-section">
-        <h3>Preferences</h3>
-        <div class="settings-grid">
-          <div><h4>Clock</h4>${toggle('clock24', s.clock24, ['24-hour', '12-hour'])}</div>
-          <div><h4>Navigation sounds</h4>${toggle('sounds', s.sounds)}</div>
-        </div>
-      </section>
-      <section class="settings-section">
-        <h3>Controls</h3>
-        <dl class="controls">
-          <dt>✕ / A · Enter</dt><dd>Select, launch game</dd>
-          <dt>○ / B · Esc</dt><dd>Back</dd>
-          <dt>□ / X · O</dt><dd>Game options</dd>
-          <dt>△ / Y · /</dt><dd>Search</dd>
-          <dt>L1 / R1 · Q / E</dt><dd>Switch between Games and Library</dd>
-          <dt>Options / Start</dt><dd>Settings</dd>
-          <dt>F11</dt><dd>Toggle full screen</dd>
-        </dl>
-      </section>
-      <div class="modal-actions">
-        <button class="btn btn-secondary spacer" data-nav data-s="quit">Quit game library</button>
-        <button class="btn btn-primary" data-nav data-s="close">Done</button>
-      </div>
-    </div>`);
-  const rootInput = layer.querySelector('[data-root]');
-  const profileInput = layer.querySelector('[data-profile]');
-  async function saveSettings(patch) {
-    try {
-      state.settings = await api('/api/settings', { method: 'POST', json: patch });
-      renderStage();
-      tickClock();
-      return true;
-    } catch (e) {
-      toast(e.message);
-      return false;
-    }
-  }
-  rootInput.addEventListener('change', async () => {
-    if (await saveSettings({ gamesRoot: rootInput.value.trim() })) toast('Games folder updated');
-    rootInput.value = state.settings.gamesRoot;
-  });
-  profileInput.addEventListener('change', () => saveSettings({ profileName: profileInput.value }));
-  layer.addEventListener('click', async (e) => {
-    const b = e.target.closest('button');
-    if (!b) return;
-    if (b.dataset.set) {
-      if (await saveSettings({ [b.dataset.set]: b.dataset.val === '1' })) {
-        $$(`[data-set="${b.dataset.set}"]`, layer).forEach((c) => c.classList.toggle('is-active', c === b));
-      }
-      return;
-    }
-    const action = b.dataset.s;
-    if (action === 'browse') {
-      const p = await browseDialog({ title: 'Choose your games folder', filter: 'dir', start: rootInput.value });
-      if (p && await saveSettings({ gamesRoot: p })) { rootInput.value = state.settings.gamesRoot; toast('Games folder updated'); }
-    }
-    if (action === 'scan') scanFolder();
-    if (action === 'add') { closeLayer(layer); openGameEditor(null); }
-    if (action === 'art-all') {
-      const { queued } = await api('/api/artwork/auto', { method: 'POST', json: {} });
-      toast(queued ? `Finding artwork for ${queued} ${queued === 1 ? 'game' : 'games'}…` : 'Every game already has artwork');
-      if (queued) watchArtwork();
-    }
-    if (action === 'close') closeLayer(layer);
-    if (action === 'quit' && await confirmDialog('Quit game library?', 'Playtime is only tracked while the library is running.', 'Quit')) {
-      await api('/api/quit', { method: 'POST' }).catch(() => {});
-      window.close();
-      document.body.innerHTML = '<div style="display:grid;place-items:center;height:100vh;font-weight:300;font-size:1.75rem">You can close this window.</div>';
-    }
-  });
-}
-
 // Poll faster while artwork downloads so new art appears promptly.
 let artworkWatch = null;
 function watchArtwork() {
@@ -1170,17 +1330,25 @@ function watchArtwork() {
 }
 
 /* ----- On-screen keyboard ----- */
+const KB_PAGES = {
+  abc: ['1234567890', 'qwertyuiop', "asdfghjkl'", 'zxcvbnm-:.'],
+  sym: ['!@#$%^&*()', '-_=+[]{}\\|', '/<>?"\';:~`', ',.@#%&*!?_'],
+};
+
 function openKeyboard(input) {
-  const rows = ['1234567890', 'qwertyuiop', "asdfghjkl'", 'zxcvbnm-:.'];
+  const multiline = input.tagName === 'TEXTAREA';
+  let page = 'abc';
   const layer = openLayer(`
     <div class="keyboard" role="dialog" aria-label="Keyboard">
-      <div class="kb-preview" data-preview></div>
-      ${rows.map((r) => `<div class="kb-row">${[...r].map((c) => `<button class="key" data-nav data-k="${esc(c)}">${esc(c)}</button>`).join('')}</div>`).join('')}
+      <div class="kb-preview${multiline ? ' kb-preview--multi' : ''}" data-preview></div>
+      <div data-rows></div>
       <div class="kb-row">
-        <button class="key key-wide" data-nav data-k="shift">Shift</button>
-        <button class="key key-wide key-space" data-nav data-k=" ">Space</button>
-        <button class="key key-wide" data-nav data-k="back">Delete</button>
-        <button class="key key-wide key-done" data-nav data-k="done">Done</button>
+        <button class="key key-mid" data-nav data-k="shift">Shift</button>
+        <button class="key key-mid" data-nav data-k="page" data-page>#+=</button>
+        <button class="key key-mid key-space" data-nav data-k=" ">Space</button>
+        ${multiline ? '<button class="key key-mid" data-nav data-k="enter">Enter</button>' : ''}
+        <button class="key key-mid" data-nav data-k="back">Delete</button>
+        <button class="key key-mid key-done" data-nav data-k="done">Done</button>
       </div>
     </div>`, {
     className: 'layer-keyboard',
@@ -1188,19 +1356,30 @@ function openKeyboard(input) {
     actions: { options: () => type('back'), search: () => type(' ') },
   });
   let shift = false;
+  const paintRows = () => {
+    const focusedKey = layer.contains(document.activeElement) ? document.activeElement.dataset.k : null;
+    layer.querySelector('[data-rows]').innerHTML = KB_PAGES[page].map((r) => `<div class="kb-row">${[...r].map((c) => `<button class="key" data-nav data-k="${esc(c)}">${esc(c)}</button>`).join('')}</div>`).join('');
+    layer.querySelector('[data-page]').textContent = page === 'abc' ? '#+=' : 'abc';
+    if (focusedKey && !['page', 'shift'].includes(focusedKey)) layer.querySelector(`[data-rows] [data-k="${CSS.escape(focusedKey)}"]`)?.focus({ preventScroll: true });
+  };
   const paint = () => {
     const v = input.value;
     layer.querySelector('[data-preview]').innerHTML = v ? `${esc(v)}<span class="caret"></span>` : `<span class="caret"></span><span class="placeholder">${esc(input.placeholder)}</span>`;
-    $$('[data-k]', layer).forEach((k) => { if (k.dataset.k.length === 1 && /[a-z]/.test(k.dataset.k)) k.textContent = shift ? k.dataset.k.toUpperCase() : k.dataset.k; });
+    $$('[data-rows] [data-k]', layer).forEach((k) => { if (/^[a-z]$/.test(k.dataset.k)) k.textContent = shift ? k.dataset.k.toUpperCase() : k.dataset.k; });
+    layer.querySelector('[data-k="shift"]').classList.toggle('is-active', shift);
   };
   function type(k) {
     if (k === 'done') return closeLayer(layer);
     if (k === 'shift') { shift = !shift; return paint(); }
-    input.value = k === 'back' ? input.value.slice(0, -1) : input.value + (shift ? k.toUpperCase() : k);
+    if (k === 'page') { page = page === 'abc' ? 'sym' : 'abc'; paintRows(); return paint(); }
+    const max = Number(input.maxLength) > 0 ? Number(input.maxLength) : Infinity;
+    if (k === 'back') input.value = input.value.slice(0, -1);
+    else if (input.value.length < max) input.value += k === 'enter' ? '\n' : shift ? k.toUpperCase() : k;
     input.dispatchEvent(new Event('input', { bubbles: true }));
     paint();
   }
   layer.addEventListener('click', (e) => { const k = e.target.closest('[data-k]'); if (k) type(k.dataset.k); });
+  paintRows();
   paint();
 }
 
@@ -1246,10 +1425,14 @@ function nearest(cur, items, dir) {
   return best;
 }
 
+// Views and dialogs can claim a direction before the generic spatial search runs: (dir, cur, layer, helpers) => handled.
+const navHooks = [];
+
 function move(dir, { repeat = false } = {}) {
   const layer = topLayer();
   const cur = document.activeElement;
   const go = (el) => { if (el) { focusEl(el); sfx.move(); } else if (!repeat) sfx.bump(); };
+  for (const hook of navHooks) if (hook(dir, cur, layer, { go, repeat })) return;
 
   if (!layer && state.view === 'home') {
     const tile = $(`#track [data-id="${state.selectedId}"]`);
@@ -1266,6 +1449,9 @@ function move(dir, { repeat = false } = {}) {
     if (cur?.closest('.topbar') && dir === 'down') return go(tile);
   }
   if (!layer && state.view === 'library' && cur?.closest('.topbar') && dir === 'down') return go($('#search'));
+  if (!layer && (state.view === 'stats' || state.view === 'settings') && cur?.closest('.topbar') && dir === 'down') {
+    return go($(state.view === 'stats' ? '#view-stats [data-nav]' : '#view-settings .rail-item.is-active'));
+  }
 
   const items = focusables(layer || document.body);
   if (!items.length) return;
@@ -1273,22 +1459,34 @@ function move(dir, { repeat = false } = {}) {
     if (!layer && state.view === 'home') return focusSelectedTile();
     return focusEl(items[0]);
   }
-  go(nearest(cur, items, dir));
+  const target = nearest(cur, items, dir);
+  // Reaching past the first or last row of a scrolling view should still scroll it into place.
+  if (!target && !layer && (dir === 'up' || dir === 'down')) {
+    const scroller = cur.closest('.view, .settings-panel');
+    if (scroller && scroller.scrollHeight > scroller.clientHeight) {
+      const before = scroller.scrollTop;
+      scroller.scrollBy({ top: dir === 'down' ? scroller.clientHeight * 0.6 : -scroller.clientHeight * 0.6, behavior: 'smooth' });
+      return scroller.scrollTop === before && dir === 'up' ? go($('.tab.is-active')) : undefined;
+    }
+  }
+  go(target);
 }
 
 /* ======================= Input: actions ======================= */
 function confirmAction() {
   const el = document.activeElement;
   if (!el || el === document.body) return move('down');
-  if (el.matches('input:not([type=file])')) return openKeyboard(el);
+  if (el.matches('input:not([type=file]), textarea')) return openKeyboard(el);
   el.click();
 }
 
 function back() {
   const layer = topLayer();
   sfx.back();
+  if (hideLaunchSplash()) return;
   if (layer) return closeLayer(layer);
-  if (state.view === 'library') return setView('home');
+  if (state.view === 'settings') return setView(state.prevView || 'home');
+  if (state.view !== 'home') return setView('home');
   focusSelectedTile();
 }
 
@@ -1296,6 +1494,7 @@ function optionsAction() {
   const layer = topLayer();
   if (layer) return layer._actions.options?.();
   const el = document.activeElement;
+  if (state.view === 'home' && state.selectedId === EXPLORE_ID) { sfx.select(); return openWallpaperMenu(); }
   const id = el?.closest('[data-id]')?.dataset.id || el?.closest('[data-go]')?.dataset.go || (el?.closest('#stage') ? state.selectedId : null);
   if (byId(id)) { sfx.select(); openGameMenu(id); }
 }
@@ -1310,13 +1509,15 @@ function searchAction() {
 function settingsAction() {
   if (topLayer()) return;
   sfx.select();
-  openSettings();
+  if (state.view === 'settings') back();
+  else setView('settings');
 }
 
-function switchTab() {
+function switchTab(delta = 1) {
   if (topLayer()) return;
   sfx.move();
-  setView(state.view === 'home' ? 'library' : 'home');
+  const here = TAB_ORDER.indexOf(state.view === 'settings' ? state.prevView : state.view);
+  setView(TAB_ORDER[(Math.max(0, here) + delta + TAB_ORDER.length) % TAB_ORDER.length]);
 }
 
 /* ----- Keyboard ----- */
@@ -1330,17 +1531,21 @@ document.addEventListener('keydown', (e) => {
       const atEdge = e.key === 'ArrowLeft' ? t.selectionStart === 0 && t.selectionEnd === 0 : t.selectionEnd === t.value.length;
       if (!atEdge) return;
     }
+    if (t.tagName === 'TEXTAREA' && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+      const atEdge = e.key === 'ArrowUp' ? t.selectionStart === 0 : t.selectionEnd === t.value.length;
+      if (!atEdge) return;
+    }
     e.preventDefault();
     return move(dirs[e.key], { repeat: e.repeat });
   }
   if (e.key === 'Escape') { e.preventDefault(); return back(); }
   if (typing) {
-    if (e.key === 'Enter') { e.preventDefault(); t.dispatchEvent(new Event('change', { bubbles: true })); move('down'); }
+    if (e.key === 'Enter' && t.tagName !== 'TEXTAREA') { e.preventDefault(); t.dispatchEvent(new Event('change', { bubbles: true })); move('down'); }
     return;
   }
   if (e.key === 'Backspace') { e.preventDefault(); return back(); }
   if (e.key === '/') { e.preventDefault(); return searchAction(); }
-  if (e.key === 'q' || e.key === 'e') return switchTab();
+  if (e.key === 'q' || e.key === 'e') return switchTab(e.key === 'e' ? 1 : -1);
   if (e.key === 'o') return optionsAction();
 });
 
@@ -1356,30 +1561,43 @@ const padPrev = {};
 const padRepeat = {};
 let padLoopRunning = false;
 let padCount = 0;
+const DEADZONE = { low: 0.4, normal: 0.55, high: 0.7 };
+
+const connectedPads = () => [...(navigator.getGamepads?.() || [])].filter(Boolean);
 
 function padLoop() {
-  const pads = [...(navigator.getGamepads?.() || [])].filter(Boolean);
-  if (pads.length !== padCount) { padCount = pads.length; if (state.selectedId === EXPLORE_ID) renderStage(); }
+  const pads = connectedPads();
+  if (pads.length !== padCount) { padCount = pads.length; onPadsChanged(); }
   if (!pads.length) { padLoopRunning = false; return; }
   if (document.hasFocus() && !document.hidden) {
     const pressed = (i) => pads.some((p) => p.buttons[i]?.pressed);
     const axis = (i) => pads.reduce((v, p) => (Math.abs(p.axes[i] || 0) > Math.abs(v) ? p.axes[i] : v), 0);
     const lx = axis(0), ly = axis(1);
     const now = performance.now();
+    const dz = DEADZONE[state.settings.stickDeadzone] || 0.55;
     const dirs = {
-      up: pressed(PAD.UP) || ly < -0.55,
-      down: pressed(PAD.DOWN) || ly > 0.55,
-      left: pressed(PAD.LEFT) || lx < -0.55,
-      right: pressed(PAD.RIGHT) || lx > 0.55,
+      up: pressed(PAD.UP) || ly < -dz,
+      down: pressed(PAD.DOWN) || ly > dz,
+      left: pressed(PAD.LEFT) || lx < -dz,
+      right: pressed(PAD.RIGHT) || lx > dz,
     };
+    // The right stick scrolls whatever is on screen.
+    const ry = axis(3);
+    if (Math.abs(ry) > 0.35) {
+      const layer = topLayer();
+      const box = layer ? layer.querySelector('.menu-list, .modal, .keyboard') : $('.view:not([hidden])');
+      box?.scrollBy({ top: ry * 22 });
+    }
     for (const [dir, on] of Object.entries(dirs)) {
       if (on && !padPrev[dir]) { padRepeat[dir] = now + 380; setDevice('pad'); move(dir); }
       else if (on && now >= padRepeat[dir]) { padRepeat[dir] = now + 120; move(dir, { repeat: true }); }
       padPrev[dir] = on;
     }
+    // In some regions ○ confirms and ✕ goes back.
+    const swap = state.settings.confirmButton === 'circle';
     const buttons = {
-      A: confirmAction, B: back, X: optionsAction, Y: searchAction,
-      START: settingsAction, SELECT: settingsAction, LB: switchTab, RB: switchTab,
+      A: swap ? back : confirmAction, B: swap ? confirmAction : back, X: optionsAction, Y: searchAction,
+      START: settingsAction, SELECT: settingsAction, LB: () => switchTab(-1), RB: () => switchTab(1),
     };
     for (const [name, fn] of Object.entries(buttons)) {
       const on = pressed(PAD[name]);
@@ -1403,8 +1621,8 @@ window.addEventListener('gamepadconnected', () => {
   startPadLoop();
   if (!document.activeElement || document.activeElement === document.body) focusSelectedTile();
 });
-window.addEventListener('gamepaddisconnected', () => { if (state.selectedId === EXPLORE_ID) renderStage(); });
-window.addEventListener('focus', () => { if ([...(navigator.getGamepads?.() || [])].some(Boolean)) startPadLoop(); });
+window.addEventListener('gamepaddisconnected', () => onPadsChanged());
+window.addEventListener('focus', () => { if (connectedPads().length) startPadLoop(); });
 
 /* ======================= Event wiring ======================= */
 $('#btn-search').innerHTML = ICON.search;
@@ -1413,9 +1631,11 @@ $('#search-icon').innerHTML = ICON.search;
 
 $$('.tab').forEach((t) => t.addEventListener('click', () => setView(t.dataset.view)));
 $('#btn-search').addEventListener('click', openSearch);
-$('#btn-settings').addEventListener('click', openSettings);
+$('#btn-settings').addEventListener('click', () => setView(state.view === 'settings' ? state.prevView : 'settings'));
+$('#btn-avatar').addEventListener('click', () => { setView('settings', { focus: false }); openSettingsCategory('profile'); });
 $('#btn-add').addEventListener('click', () => openGameEditor(null));
-$('#btn-scan').addEventListener('click', scanFolder);
+$('#btn-scan').addEventListener('click', () => scanFolder());
+$('#btn-random').addEventListener('click', () => pickRandomGame());
 
 const carousel = $('#carousel');
 const track = $('#track');
@@ -1443,9 +1663,14 @@ stage.addEventListener('click', (e) => {
   const a = e.target.closest('[data-action]')?.dataset.action;
   if (a === 'play') return launchGame(state.selectedId);
   if (a === 'menu') return openGameMenu(state.selectedId);
+  if (a === 'favorite') return toggleFavorite(state.selectedId);
+  if (a === 'trophies') return openTrophies(state.selectedId);
+  if (a === 'notes') return openNotes(state.selectedId);
+  if (a === 'game-stats') return openGameStats(state.selectedId);
   if (a === 'edit') return openGameEditor(byId(state.selectedId));
   if (a === 'add') return openGameEditor(null);
   if (a === 'scan') return scanFolder();
+  if (a === 'wallpaper') return openWallpaperMenu();
   if (a === 'open-library') return setView('library');
   const w = e.target.closest('.widget');
   if (w?.dataset.go) return goToGame(w.dataset.go);
@@ -1471,6 +1696,7 @@ grid.addEventListener('click', (e) => { const c = e.target.closest('.lib-card');
 
 $('#search').addEventListener('input', (e) => { state.query = e.target.value; renderLibrary(); });
 $('#sort-chips').addEventListener('click', (e) => { const c = e.target.closest('[data-sort]'); if (c) { state.sort = c.dataset.sort; renderLibrary(); } });
+$('#filter-chips').addEventListener('click', (e) => { const c = e.target.closest('[data-filter]'); if (c) { state.filter = c.dataset.filter; renderLibrary(); } });
 
 /* ======================= Clock + polling ======================= */
 function tickClock() {
@@ -1478,7 +1704,8 @@ function tickClock() {
   let h = d.getHours();
   let suffix = '';
   if (!state.settings.clock24) { suffix = h >= 12 ? ' PM' : ' AM'; h = h % 12 || 12; }
-  $('#clock').textContent = `${state.settings.clock24 ? pad(h) : h}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${suffix}`;
+  const secs = state.settings.showSeconds ? `:${pad(d.getSeconds())}` : '';
+  $('#clock').textContent = `${state.settings.clock24 ? pad(h) : h}:${pad(d.getMinutes())}${secs}${suffix}`;
   updateElapsed();
 }
 function updateElapsed() {
@@ -1495,15 +1722,3 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) refr
 const syncIdle = () => document.documentElement.classList.toggle('is-idle', !document.hasFocus());
 window.addEventListener('blur', syncIdle);
 window.addEventListener('focus', syncIdle);
-
-buildScene();
-refresh().then(() => {
-  const hash = location.hash;
-  if (hash === '#explore') select(EXPLORE_ID);
-  else if (hash.startsWith('#item=')) { const it = state.items[Number(hash.slice(6))]; if (it) select(it.id); }
-  if (hash === '#library') setView('library');
-  else focusSelectedTile();
-  if (hash === '#settings') openSettings();
-  if (hash.startsWith('#edit=')) { const it = state.items[Number(hash.slice(6))]; if (it?.g) openGameEditor(it.g); }
-  if (state.busy.artwork) watchArtwork();
-});
