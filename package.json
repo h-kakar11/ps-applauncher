@@ -1,0 +1,12 @@
+{
+  "name": "ps-applauncher",
+  "version": "2.0.0",
+  "private": true,
+  "description": "PS5-style full-screen launcher for local PC games. No dependencies.",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "start": "node server.js --open",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18.15" }
+}

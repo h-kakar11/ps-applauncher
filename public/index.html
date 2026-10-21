@@ -6,12 +6,14 @@
   <title>Game Library</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230070cc'/%3E%3Cpath d='M9 7l9 5-9 5z' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="features.css">
 </head>
 <body>
   <div class="backdrop" aria-hidden="true">
-    <div class="scene" id="scene"></div>
     <div class="backdrop-img" id="bg-a"></div>
     <div class="backdrop-img" id="bg-b"></div>
+    <video class="backdrop-video" id="bg-video" muted loop playsinline preload="auto"></video>
+    <div class="scene" id="scene"></div>
     <div class="backdrop-scrim" id="scrim"></div>
   </div>
 
@@ -19,10 +21,14 @@
     <nav class="tabs" aria-label="Sections">
       <button class="tab is-active" data-nav data-view="home">Games</button>
       <button class="tab" data-nav data-view="library">Library</button>
+      <button class="tab" data-nav data-view="stats">Stats</button>
     </nav>
     <div class="topbar-right">
+      <button class="now-playing" data-nav id="now-playing" hidden></button>
+      <button class="ctrl-btn" data-nav id="btn-controller" aria-label="Controllers"></button>
       <button class="icon-btn" data-nav id="btn-search" aria-label="Search games"></button>
       <button class="icon-btn" data-nav id="btn-settings" aria-label="Settings"></button>
+      <button class="avatar" data-nav id="btn-avatar" aria-label="Profile"></button>
       <time class="clock" id="clock">00:00:00</time>
     </div>
   </header>
@@ -43,34 +49,50 @@
       <div class="library-toolbar">
         <label class="search-field">
           <span class="search-icon" id="search-icon"></span>
-          <input id="search" data-nav type="search" placeholder="Search games by name" autocomplete="off" spellcheck="false">
+          <input id="search" data-nav type="search" placeholder="Search games" autocomplete="off" spellcheck="false">
         </label>
         <div class="chips" id="sort-chips">
           <button class="chip" data-nav data-sort="recent">Recently played</button>
           <button class="chip" data-nav data-sort="name">Name</button>
           <button class="chip" data-nav data-sort="played">Most played</button>
+          <button class="chip" data-nav data-sort="rating">Rating</button>
           <button class="chip" data-nav data-sort="size">Size</button>
         </div>
         <div class="toolbar-actions">
-          <button class="btn btn-secondary" data-nav id="btn-scan">Scan folder</button>
+          <button class="btn btn-secondary" data-nav id="btn-random">Surprise me</button>
+          <button class="btn btn-secondary" data-nav id="btn-scan">Scan for games</button>
           <button class="btn btn-primary" data-nav id="btn-add">Add game</button>
         </div>
       </div>
+      <div class="chips filter-chips" id="filter-chips"></div>
       <div class="library-grid" id="library-grid"></div>
     </section>
+
+    <section class="view view-stats" id="view-stats" hidden></section>
+    <section class="view view-settings" id="view-settings" hidden></section>
   </main>
 
-  <footer class="hints" aria-hidden="true">
-    <span><i class="glyph">✕</i>Select</span>
-    <span><i class="glyph">○</i>Back</span>
+  <footer class="hints" id="hints" aria-hidden="true">
+    <span><i class="glyph" data-glyph="confirm">✕</i>Select</span>
+    <span><i class="glyph" data-glyph="back">○</i>Back</span>
     <span><i class="glyph">□</i>Options</span>
     <span><i class="glyph">△</i>Search</span>
     <span><i class="glyph glyph-wide">☰</i>Settings</span>
   </footer>
 
+  <div class="launch-splash" id="launch-splash" hidden></div>
+  <div class="trophy-pop" id="trophy-pop" role="status" aria-live="polite"></div>
   <div id="layers"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="controller-decode.js"></script>
   <script src="app.js"></script>
+  <script src="launcher.js"></script>
+  <script src="stats-ui.js"></script>
+  <script src="trophies-ui.js"></script>
+  <script src="wallpaper.js"></script>
+  <script src="controllers-ui.js"></script>
+  <script src="settings.js"></script>
+  <script src="boot.js"></script>
 </body>
 </html>
